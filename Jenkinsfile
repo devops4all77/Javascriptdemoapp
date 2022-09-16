@@ -32,7 +32,8 @@ node {
       def pubProfilesJson = sh script: "az webapp deployment list-publishing-profiles -g $resourceGroup -n $webAppName", returnStdout: true
       def ftpProfile = getFtpPublishProfile pubProfilesJson
       // upload package
-      sh "curl -T index.js $ftpProfile.url/index.js -u '$ftpProfile.username:$ftpProfile.password'"
+      sh "curl -T index.js $ftpProfile.url/app.js -u '$ftpProfile.username:$ftpProfile.password'"
+      sh 'npm app.js'
       // log out
       sh 'az logout'
     }
