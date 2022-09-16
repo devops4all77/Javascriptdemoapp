@@ -33,7 +33,7 @@ node {
       def ftpProfile = getFtpPublishProfile pubProfilesJson
       // upload package
       sh "curl -T index.js $ftpProfile.url/app.js -u '$ftpProfile.username:$ftpProfile.password'"
-      sh 'npm app.js'
+      sh 'node app.js'
       // log out
       sh 'az logout'
     }
