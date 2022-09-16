@@ -15,7 +15,8 @@ node {
     }
   
     stage('build') {
-      npm install
+      sh 'npm run build'
+      sh 'npm install'
     }
   
     stage('deploy') {
